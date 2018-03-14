@@ -15,6 +15,13 @@ const ship_historyModel = require('../ship_history/ship_historyModel');
 const receiveOrder = async (order_user, status, longtitude, latitude) => {
     try
     {
+        var history = {
+            order : order_user.order,
+            longtitude : longtitude,
+            latitude : latitude
+        }
+
+
         //Nhận đơn
         if(status === 1)
         {
@@ -27,16 +34,15 @@ const receiveOrder = async (order_user, status, longtitude, latitude) => {
         else if(status === 2 || status === 3)
         {
             //Thêm tọa độ tại điểm nhận đơn hoặc kết thúc
-            let history = {
-                order : order_user.order,
-                longtitude : longtitude,
-                latitude : latitude
-            }
-
+           
             await ship_historyModel.insertHistory(history);
             
             //Update trạng thái thành 2, 3
             return await ordersModel.updateStatusOrder(order_user.order, status);
+        }
+        else if(status === 4)
+        {
+            await ship_historyModel.insertHistory(history);
         }
         else 
         {

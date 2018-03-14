@@ -58,7 +58,7 @@ Router.post('/receive', async(req, res) => {
 });
 
 //bắt đầu giao hàng.
-Router.post('/shipping', async(req, res) => {
+Router.post('/start', async(req, res) => {
     try
     {
         if(!Utils.verifyLogin(req.body.idlogin, req.headers['token']))
@@ -73,6 +73,35 @@ Router.post('/shipping', async(req, res) => {
             }
 
             let result = await order_userModel.receiveOrder(order_user, 2, req.body.longtitude, req.body.latitude);
+
+            if(result === null)
+                res.send({status : false, msg : config.CO_LOI_XAY_RA});
+            else 
+                res.send({ status : true, msg : config.THANH_CONG});
+        }
+    }
+    catch(err)
+    {
+        res.send({status : false, msg : config.CO_LOI_XAY_RA});
+    }
+});
+
+//Đang giao hàng
+Router.post('/shipping', async(req, res) => {
+    try
+    {
+        if(!Utils.verifyLogin(req.body.idlogin, req.headers['token']))
+        {
+            res.send({status : false, msg : config.MA_TOKEN_KHONG_DUNG});
+        }
+        else
+        {
+            let order_user = {
+                order : req.body.order,
+                user : req.body.idlogin
+            }
+
+            let result = await order_userModel.receiveOrder(order_user, 4, req.body.longtitude, req.body.latitude);
 
             if(result === null)
                 res.send({status : false, msg : config.CO_LOI_XAY_RA});
