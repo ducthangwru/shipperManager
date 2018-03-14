@@ -61,6 +61,11 @@ Router.post('/receive', async(req, res) => {
 Router.post('/start', async(req, res) => {
     try
     {
+        if(typeof req.body.longtitude == "undefined" || req.body.longtitude === 0)
+        {
+            res.send({status : false, msg : config.CO_LOI_XAY_RA});
+        }
+
         if(!Utils.verifyLogin(req.body.idlogin, req.headers['token']))
         {
             res.send({status : false, msg : config.MA_TOKEN_KHONG_DUNG});
@@ -90,6 +95,11 @@ Router.post('/start', async(req, res) => {
 Router.post('/shipping', async(req, res) => {
     try
     {
+        if(typeof req.body.longtitude == "undefined" || req.body.longtitude === 0)
+        {
+            res.send({status : false, msg : config.CO_LOI_XAY_RA});
+        }
+
         if(!Utils.verifyLogin(req.body.idlogin, req.headers['token']))
         {
             res.send({status : false, msg : config.MA_TOKEN_KHONG_DUNG});
@@ -119,6 +129,11 @@ Router.post('/shipping', async(req, res) => {
 Router.post('/complete', async(req, res) => {
     try
     {
+        if(typeof req.body.longtitude == "undefined" || req.body.longtitude === 0)
+        {
+            res.send({status : false, msg : config.CO_LOI_XAY_RA});
+        }
+        
         if(!Utils.verifyLogin(req.body.idlogin, req.headers['token']))
         {
             res.send({status : false, msg : config.MA_TOKEN_KHONG_DUNG});

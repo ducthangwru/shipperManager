@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const ship_historySchema = require('./ship_historySchema');
-let ship_historyModel = mongoose.model('ship_history', ship_historySchema);
+let ship_historyModel = mongoose.model('ship_history', ship_historySchema, 'ship_history');
 
 const selectHistory = async (idOrder) => {
     try

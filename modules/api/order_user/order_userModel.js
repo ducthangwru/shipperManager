@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const order_userSchema = require('./order_userSchema');
-let order_userModel = mongoose.model('order_user', order_userSchema);
+let order_userModel = mongoose.model('order_user', order_userSchema, 'order_user');
 
 const ordersModel = require('../orders/ordersModel');
 const ship_historyModel = require('../ship_history/ship_historyModel');
