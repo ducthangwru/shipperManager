@@ -25,6 +25,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/popup.css">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -58,7 +59,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<button id = "btnLogin" class="login100-form-btn">
 								Đăng nhập
 							</button>
 						</div>
@@ -101,6 +102,13 @@
 
 	<!-- <div id="dropDownSelect1"></div>
 	 -->
+	<div class="popup" data-popup="popup-1">
+		<div class="popup-inner">
+			<h2 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">Đăng nhập</h2>
+			<p class="label-input100" style="text-align: center; margin: 10px;">Tên tài khoản hoặc mật khẩu không đúng!</p>
+			<a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+		</div>
+	</div>
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -117,6 +125,6 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-
+	<script src = "js/index.js"></script>
 </body>
 </html>
